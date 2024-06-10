@@ -17,11 +17,11 @@ function addNewtodo(){
     inputElem.focus()
 
     todosArray.push(newTodoobj)
-    setLocalStroge(todosArray)
+    setLocalStorage(todosArray)
     todoGenerator(todosArray)
 }
 
-function setLocalStroge(todoList){
+function setLocalStorage(todoList){
     localStorage.setItem('todos', JSON.stringify(todoList))
 }
 
@@ -47,7 +47,7 @@ function todoGenerator(todoList) {
         newTodoDeleteBtn.innerText='Delete'
         newTodoDeleteBtn.setAttribute('onClick', `removeTodo(${todo.id})`)
 
-        if (condition) {
+        if (todo.complete) {
             newTodoLiElem.className = 'uncompleted well'
             newTodoCompleteBtn.innerHTML = 'UnComplete'
             
@@ -70,7 +70,7 @@ function editTodo(todoId) {
 
         }
     })
-    setLocalStroge(todosArray)
+    setLocalStorage(todosArray)
     todoGenerator(todosArray)
 }
 
@@ -83,7 +83,7 @@ function removeTodo(todoId){
 
     todosArray.splice(maintodoIndex, 1)
 
-    setLocalStroge(todosArray)
+    setLocalStorage(todosArray)
     todoGenerator(todosArray)
 }
 
